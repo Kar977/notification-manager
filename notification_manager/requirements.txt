@@ -1,0 +1,13 @@
+uvicorn
+fastapi
+sqlalchemy
+pydantic
+sqlalchemy-utils
+psycopg2-binary
+python-dotenv
+asyncpg
+pydantic-settings
+pika
+requests
+
+#ToDo przeniesc plik requirements bezposrednio do katalogu cd ../notification_manager

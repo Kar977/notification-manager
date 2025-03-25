@@ -1,0 +1,41 @@
+version: '3.9'
+
+services:
+  rabbitmq:
+    image: "rabbitmq:3-management"
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - service_email_network
+    healthcheck:
+      test: rabbitmq-diagnostics -q ping
+      interval: 30s
+      timeout: 30s
+      retries: 3
+
+  consumer:
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile-consumer
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    networks:
+      - service_email_network
+  email_service:
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile-email-service
+    restart: always
+    ports:
+      - "9000:9000"
+    depends_on:
+      - rabbitmq
+      - consumer
+    networks:
+      - service_email_network
+
+networks:
+  service_email_network:
+    external: true
