@@ -49,10 +49,14 @@ jobs:
           echo "Docker ps -a:"
           docker ps -a
 
-      - name: Check if API Gateway is running
-        run: |
-          curl --fail http://localhost:9000 || (echo "Email notification not responding" && exit 1)
-
+      - name: Wait for container
+        uses: stringbean/docker-healthcheck-action@v1
+        with:
+          container: docker_rabbitmq_1
+          wait-time: 5
+          require-status: running
+          require-healthy: true
+          
       - name: Tear down containers and networks
         if: always()
         working-directory: docker
