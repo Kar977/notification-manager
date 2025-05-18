@@ -37,7 +37,7 @@ jobs:
       - name: Tag Docker image
         run: |
           docker tag docker-consumer:latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.eu-central-1.amazonaws.com/email-notification-consumer:latest
-          docker tag docker-email-service:latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.eu-central-1.amazonaws.com/email-notification-manager-service:latest
+          docker tag docker-email_service:latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.eu-central-1.amazonaws.com/email-notification-manager-service:latest
 
       - name: Push Docker image to Amazon ECR
         run: |
