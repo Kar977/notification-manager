@@ -23,6 +23,7 @@ services:
         condition: service_healthy
     networks:
       - service_email_network
+
   email_service:
     build:
       context: ../

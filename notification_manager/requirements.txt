@@ -9,5 +9,3 @@ asyncpg
 pydantic-settings
 pika
 requests
-
-#ToDo przeniesc plik requirements bezposrednio do katalogu cd ../notification_manager
