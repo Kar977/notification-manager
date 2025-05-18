@@ -37,8 +37,16 @@ jobs:
         run: |
           echo "Waiting for services to become healthy..."
           sleep 20
-          docker logs docker_email-service_1
-          
+          echo "Logs from docker_email_service_1:"
+          docker logs docker_email_service_1
+
+          echo "Logs from docker_consumer_1:"
+          docker logs docker_consumer_1
+
+          echo "Logs from docker_rabbitmq_1:"
+          docker logs docker_rabbitmq_1
+
+          echo "Docker ps -a:"
           docker ps -a
 
       - name: Check if API Gateway is running
