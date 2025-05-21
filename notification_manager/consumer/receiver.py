@@ -7,7 +7,7 @@ import requests
 def callback(ch, method, properties, body):
     email_data = json.loads(body)
     response = requests.post(
-        url="http://email_service:9000/notification/send-email", json=email_data
+        url="http://email_service:8004/notification/send-email", json=email_data
     )
 
     print(f" [x] Email sent, response status: {response.status_code}", flush=True)

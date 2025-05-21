@@ -30,7 +30,7 @@ services:
       dockerfile: docker/Dockerfile-email-service
     restart: always
     ports:
-      - "9000:9000"
+      - "8004:8004"
     depends_on:
       - rabbitmq
       - consumer
