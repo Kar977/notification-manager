@@ -16,7 +16,7 @@ def callback(ch, method, properties, body):
 
 
 connection = pika.BlockingConnection(
-    pika.ConnectionParameters(host="rabbitmq", port=5672)
+    pika.ConnectionParameters(host="rabbitmq", port=5672, heartbeat=30, blocked_connection_timeout=60)
 )
 channel = connection.channel()
 
